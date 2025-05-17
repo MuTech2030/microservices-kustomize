@@ -1,0 +1,10 @@
+syncSecret:
+  enabled: true
+
+enableSecretRotation: true
+
+linux:
+  enabled: true
+
+windows:
+  enabled: false
