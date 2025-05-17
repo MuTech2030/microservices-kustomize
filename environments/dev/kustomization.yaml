@@ -2,8 +2,8 @@ resources:
   - ../../namespaces
   - services/service-a
   - ../../components/argocd
+  - ../../components/aws-secrets-csi
+#  - ../../components/aws-opensearch-exporter
+  - ../../components/nginx-ingress
 components:
   - ../../components/debug
-  - ../../components/aws-secrets-csi
-  - ../../components/aws-opensearch-exporter
-  - ../../components/nginx-ingress

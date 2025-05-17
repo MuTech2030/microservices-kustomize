@@ -4,7 +4,7 @@ kind: Kustomization
 helmCharts:
   - name: opensearch-metrics-exporter
     repo: https://opensearch-project.github.io/helm-charts/
-    version: 1.18.0
+    version: 1.21.0
     releaseName: os-exporter
     namespace: monitoring
     valuesFile: values.yaml
