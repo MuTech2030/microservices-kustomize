@@ -6,3 +6,4 @@ components:
   - ../../components/debug
   - ../../components/aws-secrets-csi
   - ../../components/aws-opensearch-exporter
+  - ../../components/nginx-ingress
