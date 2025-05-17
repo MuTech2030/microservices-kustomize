@@ -1,0 +1,21 @@
+provider: aws
+policy: upsert-only
+registry: txt
+txtOwnerId: quik-com-owner
+domainFilters:
+  - quik.com
+logLevel: info
+
+sources:
+  - ingress
+
+aws:
+  region: us-east-1  # change to your Route53 hosted zone's region
+  zoneType: public   # or private if using private hosted zones
+
+# Optional: limits ExternalDNS to process ingresses with this annotation
+annotationFilter: "external-dns.alpha.kubernetes.io/target"
+
+# Enable RBAC if needed
+rbac:
+  create: true

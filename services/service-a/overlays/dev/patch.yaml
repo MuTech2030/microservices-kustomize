@@ -8,3 +8,13 @@
     - name: ENV
       value: development
 
+- op: replace
+  path: /spec/rules/0/host
+  value: dev-service-a.quik.com
+
+- op: replace
+  path: /spec/tls
+  value:
+    - hosts:
+        - dev-service-a.quik.com
+      secretName: quik-tls
