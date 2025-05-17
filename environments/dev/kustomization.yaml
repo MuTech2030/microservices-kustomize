@@ -4,3 +4,4 @@ resources:
   - ../../components/argocd
 components:
   - ../../components/debug
+  - ../../components/aws-secrets-csi
