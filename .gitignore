@@ -5,9 +5,7 @@ components/**/charts/*
 # Ignore any *.tgz helm chart archives if present
 components/**/*.tgz
 
-# Ignore Kubernetes resource generated files (optional, if you generate YAML locally)
-*.yaml
-*.yml
+
 
 # Ignore common OS files
 .DS_Store

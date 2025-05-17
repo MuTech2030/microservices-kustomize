@@ -1,0 +1,3 @@
+resources:
+  - namespace-payment.yaml
+  - namespace-argocd.yaml

@@ -1,0 +1,2 @@
+resources:
+  - ../../../../services/service-a/overlays/dev
