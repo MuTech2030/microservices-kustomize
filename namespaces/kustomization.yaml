@@ -1,3 +1,5 @@
 resources:
   - namespace-payment.yaml
   - namespace-argocd.yaml
+  - namespace-monitoring.yaml
+
