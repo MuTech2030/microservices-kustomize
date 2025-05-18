@@ -9,21 +9,28 @@ resources:
 components:
   - ../../../../components/debug
 
-images:
-  - name: java-app
-    newName: openjdk
-    newTag: 17.0.8-oracle-
-
 labels:
   - includeSelectors: true
     pairs:
       environment: dev
+
 patches:
   - target:
+      group: apps
+      version: v1
       kind: Deployment
-      name: java-app
+      name: react-frontend
     path: patch-deployment.yaml
   - target:
+      group: networking.k8s.io
+      version: v1
       kind: Ingress
-      name: service-a-ingress
+      name: service-c-ingress
     path: patch-ingress.yaml
+
+
+
+images:
+  - name: react-frontend
+    newName: node
+    newTag: 18.17.1-alpine

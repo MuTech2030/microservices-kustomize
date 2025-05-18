@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: java-app
-        image: nginx:latest # Use your Docker Hub image if pushed
+        image: openjdk:17.0.8-oracle
         ports:
         - containerPort: 8080

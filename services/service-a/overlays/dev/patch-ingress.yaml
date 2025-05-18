@@ -1,14 +1,4 @@
 - op: replace
-  path: /spec/replicas
-  value: 1
-
-- op: add
-  path: /spec/template/spec/containers/0/env
-  value:
-    - name: ENV
-      value: development
-
-- op: replace
   path: /spec/rules/0/host
   value: dev-service-a.quik.com
 

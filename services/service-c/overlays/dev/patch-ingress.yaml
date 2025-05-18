@@ -1,0 +1,10 @@
+- op: replace
+  path: /spec/rules/0/host
+  value: dev-service-c.quik.com
+
+- op: replace
+  path: /spec/tls
+  value:
+    - hosts:
+        - dev-service-c.quik.com
+      secretName: quik-tls

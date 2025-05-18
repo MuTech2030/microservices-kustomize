@@ -5,17 +5,17 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: dev-service-a.quik.com
+    - host: dev-service-c.quik.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: java-app-service
+                name: react-frontend-service
                 port:
                   number: 80
   tls:
     - hosts:
-        - dev-service-a.quik.com
+        - dev-service-c.quik.com
       secretName: quik-tls
