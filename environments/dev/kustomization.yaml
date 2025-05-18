@@ -5,5 +5,6 @@ resources:
   - ../../components/aws-secrets-csi
 #  - ../../components/aws-opensearch-exporter
   - ../../components/nginx-ingress
+  - ../../components/externaldns
 components:
   - ../../components/debug
