@@ -6,5 +6,7 @@ resources:
 #  - ../../components/aws-opensearch-exporter
   - ../../components/nginx-ingress
   - ../../components/externaldns
+  - ../../components/calico/overlays/dev
+
 components:
   - ../../components/debug

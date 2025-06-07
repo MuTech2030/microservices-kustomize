@@ -6,7 +6,7 @@ namespace: payments
 
 resources:
   - ../../base
-  
+  - ../../../../components/calico  
 components:
   - ../../../../components/debug
 
