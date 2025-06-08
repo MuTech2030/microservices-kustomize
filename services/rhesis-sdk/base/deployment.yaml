@@ -1,0 +1,115 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rhesis-sdk
+  labels:
+    app.kubernetes.io/name: rhesis-sdk
+    app.kubernetes.io/instance: rhesis-sdk
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/component: sdk
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: rhesis-sdk
+      app.kubernetes.io/instance: rhesis-sdk
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: rhesis-sdk
+        app.kubernetes.io/instance: rhesis-sdk
+    spec:
+      serviceAccountName: rhesis-sdk
+      securityContext:
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+      containers:
+        - name: rhesis-sdk
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+          image: "gcr.io/mutech2030/rhesis-sdk:1.0.0"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 2
+          resources:
+            limits:
+              cpu: "400m"
+              memory: "384Mi"
+            requests:
+              cpu: "200m"
+              memory: "192Mi"
+          env:
+            - name: CONFIG_FILE
+              value: "/config/sdk-config.yaml"
+            - name: LOG_LEVEL
+              valueFrom:
+                configMapKeyRef:
+                  name: rhesis-sdk-config
+                  key: LOG_LEVEL
+            - name: SDK_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: rhesis-sdk-secret
+                  key: SDK_API_KEY
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+              readOnly: true
+            - name: tmp-volume
+              mountPath: /tmp
+            - name: docs-volume
+              mountPath: /app/docs
+              readOnly: true
+      volumes:
+        - name: config-volume
+          configMap:
+            name: rhesis-sdk-config
+        - name: tmp-volume
+          emptyDir: {}
+        - name: docs-volume
+          configMap:
+            name: rhesis-sdk-docs
+      nodeSelector:
+        kubernetes.io/os: linux
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - rhesis-sdk
+                topologyKey: kubernetes.io/hostname
+      tolerations: []

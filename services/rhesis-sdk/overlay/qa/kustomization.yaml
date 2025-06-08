@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: payments-qa
+resources:
+  - ../../base
+images:
+  - name: gcr.io/mutech2030/rhesis-sdk
+    newName: gcr.io/mutech2030/rhesis-sdk
+    newTag: 1.0.0-qa
+labels:
+  - pairs:
+      app: rhesis-sdk
+      environment: qa
+patches:
+  - target:
+      kind: Deployment
+      name: rhesis-sdk
+    path: patch-deployment.yaml

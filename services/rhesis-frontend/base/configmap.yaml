@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhesis-frontend-config
+  labels:
+    app.kubernetes.io/name: rhesis-frontend
+    app.kubernetes.io/instance: rhesis-frontend
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/component: frontend
+data:
+  API_BASE_URL: "https://polyphemus.rhesis.example.com"
+  APP_VERSION: "1.0.0"
+  ENVIRONMENT: "production"
+  ENABLE_ANALYTICS: "true"
+  ENABLE_ERROR_REPORTING: "true"
+  frontend-config.json: |
+    {
+      "api": {
+        "baseUrl": "https://polyphemus.rhesis.example.com",
+        "timeout": 30000,
+        "retries": 3
+      },
+      "features": {
+        "analytics": true,
+        "errorReporting": true,
+        "darkMode": true,
+        "notifications": true
+      },
+      "ui": {
+        "theme": "default",
+        "language": "en",
+        "dateFormat": "YYYY-MM-DD",
+        "timeFormat": "24h"
+      },
+      "security": {
+        "enableCSP": true,
+        "enableXSRF": true,
+        "sessionTimeout": 3600
+      }
+    }
+

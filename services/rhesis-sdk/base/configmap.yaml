@@ -1,0 +1,100 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhesis-sdk-config
+  labels:
+    app.kubernetes.io/name: rhesis-sdk
+    app.kubernetes.io/instance: rhesis-sdk
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/component: sdk
+data:
+  LOG_LEVEL: "info"
+  ENVIRONMENT: "production"
+  API_VERSION: "v1"
+  ENABLE_DOCS: "true"
+  ENABLE_SWAGGER: "true"
+  sdk-config.yaml: |
+    server:
+      port: 8080
+      timeout: 30s
+      cors:
+        enabled: true
+        allowedOrigins:
+          - "*"
+      rateLimit:
+        enabled: true
+        requestsPerMinute: 5000
+    sdk:
+      version: "1.0.0"
+      supportedLanguages:
+        - "javascript"
+        - "python"
+        - "go"
+        - "java"
+        - "csharp"
+      documentation:
+        enabled: true
+        swagger: true
+        examples: true
+    api:
+      baseUrl: "https://polyphemus.rhesis.example.com"
+      timeout: 30s
+      retries: 3
+    cache:
+      enabled: true
+      ttl: 3600s
+    monitoring:
+      enabled: true
+      metricsPort: 9090
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhesis-sdk-docs
+  labels:
+    app.kubernetes.io/name: rhesis-sdk
+    app.kubernetes.io/instance: rhesis-sdk
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/component: sdk
+data:
+  getting-started.md: |
+    # Rhesis SDK - Getting Started
+    
+    Welcome to the Rhesis SDK! This guide will help you get started with integrating Rhesis into your applications.
+    
+    ## Installation
+    
+    ### JavaScript/Node.js
+    ```bash
+    npm install @rhesis/sdk
+    ```
+    
+    ### Python
+    ```bash
+    pip install rhesis-sdk
+    ```
+    
+    ### Go
+    ```bash
+    go get github.com/rhesis/sdk-go
+    ```
+    
+    ## Quick Start
+    
+    ```javascript
+    import { RhesisClient } from '@rhesis/sdk';
+    
+    const client = new RhesisClient({
+      apiKey: 'your-api-key',
+      baseUrl: 'https://sdk.rhesis.example.com'
+    });
+    
+    // Example usage
+    const result = await client.processPayment({
+      amount: 100,
+      currency: 'USD',
+      paymentMethod: 'card'
+    });
+    ```

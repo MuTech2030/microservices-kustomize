@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhesis-polyphemus-config
+  labels:
+    app.kubernetes.io/name: rhesis-polyphemus
+    app.kubernetes.io/instance: rhesis-polyphemus
+    app.kubernetes.io/version: "1.0.0"
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/component: api
+data:
+  LOG_LEVEL: "info"
+  ENVIRONMENT: "production"
+  BACKEND_API_URL: "http://rhesis-backend.payments.svc.cluster.local"
+  polyphemus-config.yaml: |
+    api:
+      port: 8080
+      timeout: 30s
+      rateLimit:
+        enabled: true
+        requestsPerMinute: 1000
+      cors:
+        enabled: true
+        allowedOrigins:
+          - "https://frontend.rhesis.example.com"
+      authentication:
+        enabled: true
+        tokenExpiry: 24h
+      monitoring:
+        enabled: true
+        metricsPort: 9090
+    database:
+      connectionPool:
+        maxConnections: 20
+        maxIdleTime: 300s
+    cache:
+      enabled: true
+      ttl: 3600s
+

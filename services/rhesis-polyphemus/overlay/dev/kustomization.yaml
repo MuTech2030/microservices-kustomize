@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: payments
+resources:
+  - ../../base
+components:
+  - ../../../../components/debug
+images:
+  - name: gcr.io/mutech2030/rhesis-polyphemus
+    newName: gcr.io/mutech2030/rhesis-polyphemus
+    newTag: 1.0.0-dev
+labels:
+  - pairs:
+      app: rhesis-polyphemus
+      environment: dev
+patches:
+  - target:
+      kind: Deployment
+      name: rhesis-polyphemus
+    path: patch-deployment.yaml
+

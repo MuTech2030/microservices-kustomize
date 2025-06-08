@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rhesis-frontend
+  labels:
+    app.kubernetes.io/name: rhesis-frontend
+    app.kubernetes.io/instance: rhesis-frontend
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: app.rhesis.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rhesis-frontend
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - app.rhesis.example.com
+      secretName: rhesis-frontend-tls-secret
+
