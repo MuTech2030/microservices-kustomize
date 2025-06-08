@@ -1,14 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster1-services
+  name: cluster1-apps
 spec:
   generators:
     - git:
         repoURL: https://github.com/MuTech2030/k8s-cluster-app-argocd-deployments.git
         revision: main
         directories:
-          - path: apps/*
+          - path: namespaces/*
+          - path: services/*
+          - path: components/*
   template:
     metadata:
       name: '{{path.basename}}'
@@ -20,7 +22,6 @@ spec:
         path: '{{path}}'
       destination:
         server: https://192.168.64.3:6443
-        namespace: payment
       syncPolicy:
         automated:
           prune: true
