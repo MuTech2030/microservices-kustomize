@@ -8,4 +8,19 @@ resources:
   - services/rhesis-polyphemus
   - services/rhesis-frontend
   - services/rhesis-sdk
-  - components
+  - components/nginx-ingress
+  - components/lgtm
+  - components/defender
+  - components/calico
+  - components/datadog
+  - components/monitor
+  - components/istio
+  - components/disk-csi
+  - components/file-csi
+  - components/secrets-store-csi
+  - components/externaldns
+  - components/argocd
+  - components/github-actions-runner
+  - components/keda
+  - components/hpa
+

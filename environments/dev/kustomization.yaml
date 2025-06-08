@@ -9,7 +9,8 @@ resources:
   - services/rhesis-polyphemus
   - services/rhesis-frontend
   - services/rhesis-sdk
-  - components
+  - components/nginx-ingress
 
 components:
   - ../../components/debug
+
