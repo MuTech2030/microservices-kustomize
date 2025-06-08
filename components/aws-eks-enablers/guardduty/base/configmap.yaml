@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guardduty-config
+  namespace: guardduty
+  labels:
+    app.kubernetes.io/name: guardduty
+    app.kubernetes.io/instance: guardduty
+    cloud-provider: aws
+    platform: eks
+data:
+  cloud-provider: "aws"
+  platform: "eks"
+  region: "us-west-2"
+  cluster-name: "eks-cluster"

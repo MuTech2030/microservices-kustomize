@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-audit-manager-config
+  namespace: aws-audit-manager
+  labels:
+    app.kubernetes.io/name: aws-audit-manager
+    app.kubernetes.io/instance: aws-audit-manager
+    cloud-provider: aws
+    platform: eks
+data:
+  cloud-provider: "aws"
+  platform: "eks"
+  region: "us-west-2"
+  cluster-name: "eks-cluster"

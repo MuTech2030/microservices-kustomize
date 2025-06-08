@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keda-config
+  namespace: keda
+  labels:
+    app.kubernetes.io/name: keda
+    app.kubernetes.io/instance: keda
+    cloud-provider: aws
+    platform: eks
+data:
+  cloud-provider: "aws"
+  platform: "eks"
+  region: "us-west-2"
+  cluster-name: "eks-cluster"

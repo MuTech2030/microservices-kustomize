@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hpa-config
+  namespace: hpa
+  labels:
+    app.kubernetes.io/name: hpa
+    app.kubernetes.io/instance: hpa
+    cloud-provider: aws
+    platform: eks
+data:
+  cloud-provider: "aws"
+  platform: "eks"
+  region: "us-west-2"
+  cluster-name: "eks-cluster"

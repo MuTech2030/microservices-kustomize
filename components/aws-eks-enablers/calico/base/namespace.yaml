@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: calico
+  labels:
+    app.kubernetes.io/name: calico
+    app.kubernetes.io/instance: calico
+    cloud-provider: aws
+    platform: eks

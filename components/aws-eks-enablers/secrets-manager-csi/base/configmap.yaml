@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: secrets-manager-csi-config
+  namespace: secrets-manager-csi
+  labels:
+    app.kubernetes.io/name: secrets-manager-csi
+    app.kubernetes.io/instance: secrets-manager-csi
+    cloud-provider: aws
+    platform: eks
+data:
+  cloud-provider: "aws"
+  platform: "eks"
+  region: "us-west-2"
+  cluster-name: "eks-cluster"

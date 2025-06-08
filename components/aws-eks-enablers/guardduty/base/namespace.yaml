@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: guardduty
+  labels:
+    app.kubernetes.io/name: guardduty
+    app.kubernetes.io/instance: guardduty
+    cloud-provider: aws
+    platform: eks

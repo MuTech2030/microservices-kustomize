@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: github-actions-runner
+  labels:
+    app.kubernetes.io/name: github-actions-runner
+    app.kubernetes.io/instance: github-actions-runner
+    cloud-provider: aws
+    platform: eks
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: github-actions-runner
+subjects:
+  - kind: ServiceAccount
+    name: github-actions-runner
+    namespace: github-actions-runner

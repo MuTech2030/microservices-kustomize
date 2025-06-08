@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hpa
+  labels:
+    app.kubernetes.io/name: hpa
+    app.kubernetes.io/instance: hpa
+    cloud-provider: aws
+    platform: eks

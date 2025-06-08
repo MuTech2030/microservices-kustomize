@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cloudwatch
+  labels:
+    app.kubernetes.io/name: cloudwatch
+    app.kubernetes.io/instance: cloudwatch
+    cloud-provider: aws
+    platform: eks

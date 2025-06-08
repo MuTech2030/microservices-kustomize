@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hpa
+  namespace: hpa
+  labels:
+    app.kubernetes.io/name: hpa
+    app.kubernetes.io/instance: hpa
+    cloud-provider: aws
+    platform: eks
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: hpa
+    app.kubernetes.io/instance: hpa
+    app.kubernetes.io/component: controller

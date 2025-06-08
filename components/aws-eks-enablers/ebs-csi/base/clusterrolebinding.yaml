@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ebs-csi
+  labels:
+    app.kubernetes.io/name: ebs-csi
+    app.kubernetes.io/instance: ebs-csi
+    cloud-provider: aws
+    platform: eks
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ebs-csi
+subjects:
+  - kind: ServiceAccount
+    name: ebs-csi
+    namespace: ebs-csi

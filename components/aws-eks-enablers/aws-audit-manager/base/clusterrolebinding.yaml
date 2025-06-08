@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: aws-audit-manager
+  labels:
+    app.kubernetes.io/name: aws-audit-manager
+    app.kubernetes.io/instance: aws-audit-manager
+    cloud-provider: aws
+    platform: eks
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: aws-audit-manager
+subjects:
+  - kind: ServiceAccount
+    name: aws-audit-manager
+    namespace: aws-audit-manager

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ebs-csi-config
+  namespace: ebs-csi
+  labels:
+    app.kubernetes.io/name: ebs-csi
+    app.kubernetes.io/instance: ebs-csi
+    cloud-provider: aws
+    platform: eks
+data:
+  cloud-provider: "aws"
+  platform: "eks"
+  region: "us-west-2"
+  cluster-name: "eks-cluster"

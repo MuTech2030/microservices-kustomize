@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: calico
+  namespace: calico
+  labels:
+    app.kubernetes.io/name: calico
+    app.kubernetes.io/instance: calico
+    cloud-provider: aws
+    platform: eks
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: calico
+    app.kubernetes.io/instance: calico
+    app.kubernetes.io/component: controller

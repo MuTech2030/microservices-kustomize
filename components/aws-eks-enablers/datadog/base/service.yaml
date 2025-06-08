@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: datadog
+  namespace: datadog
+  labels:
+    app.kubernetes.io/name: datadog
+    app.kubernetes.io/instance: datadog
+    cloud-provider: aws
+    platform: eks
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: datadog
+    app.kubernetes.io/instance: datadog
+    app.kubernetes.io/component: controller
