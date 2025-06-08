@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../components/azure-nginx-ingress/overlays/qa
+  - ../../../components/azure-lgtm/overlays/qa
+  - ../../../components/azure-defender/overlays/qa
+  - ../../../components/azure-calico/overlays/qa
+  - ../../../components/azure-datadog/overlays/qa
+  - ../../../components/azure-monitor/overlays/qa
+  - ../../../components/azure-istio/overlays/qa
+  - ../../../components/azure-disk-csi/overlays/qa
+  - ../../../components/azure-file-csi/overlays/qa
+  - ../../../components/azure-secrets-store-csi/overlays/qa
+  - ../../../components/azure-externaldns/overlays/qa
+  - ../../../components/azure-argocd/overlays/qa
+  - ../../../components/azure-github-actions-runner/overlays/qa
+  - ../../../components/azure-keda/overlays/qa
+  - ../../../components/azure-hpa/overlays/qa

@@ -3,7 +3,9 @@ kind: Kustomization
 
 resources:
   - ../../namespaces
+  - services/rhesis-backend
   - services/rhesis-worker
   - services/rhesis-polyphemus
   - services/rhesis-frontend
   - services/rhesis-sdk
+  - components

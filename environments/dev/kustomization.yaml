@@ -4,17 +4,12 @@ kind: Kustomization
 resources:
   - ../../namespaces
   - services/service-a
+  - services/rhesis-backend
   - services/rhesis-worker
   - services/rhesis-polyphemus
   - services/rhesis-frontend
   - services/rhesis-sdk
-  - ../../components/argocd
-  - ../../components/aws-secrets-csi
-#  - ../../components/aws-opensearch-exporter
-  - ../../components/nginx-ingress
-  - ../../components/externaldns
-  - ../../components/calico/overlays/dev
+  - components
 
 components:
   - ../../components/debug
-
